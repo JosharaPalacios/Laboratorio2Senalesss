@@ -91,8 +91,6 @@ La correlación cruzada es útil en múltiples contextos de procesamiento digita
 **Procesamiento de imágenes** → registro y alineación de imágenes desplazadas.  
 **Control de calidad** → comparación de señales de vibración o fallas con patrones de referencia.
 
----
-
 
 
 ## PARTE C 
