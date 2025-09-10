@@ -420,6 +420,9 @@ plt.grid()
 plt.show()
 ```
 <img width="434" height="338" alt="densidad" src="https://github.com/user-attachments/assets/3c487a52-fa25-4bbf-9da1-b95535834ff3" />
+
+
+
 ## c. estadísticos en el dominio de la frecuencia:
 Permite describir cómo se distribuye la energía de la señal en las distintas componentes espectrales. A través de la frecuencia media, mediana y la desviación estándar se cuantifica la concentración y dispersión del espectro, mientras que el histograma de frecuencias ofrece una representación visual de dicha distribución.
 ## i.	Frecuencia media
