@@ -130,9 +130,54 @@ plt.show()
 
 ## 1.	Determine la frecuencia de Nyquist para la señal generada
 La frecuencia de Nyquist se utiliza como referencia fundamental para garantizar un muestreo adecuado de la señal. Dado que corresponde a la mitad de la frecuencia de muestreo original, establece el límite máximo de información que puede analizarse sin que aparezca aliasing. A partir de este valor se define la nueva frecuencia de muestreo (4·Nyquist), lo que permite digitalizar la señal con mayor densidad de puntos, mejorando la resolución temporal y la representación en el dominio de la frecuencia sin alterar su contenido espectral real.
+```python
+# Frecuencia de Nyquist
+fs = 4000  # frecuencia de muestreo usada
+f_nyquist = fs / 2
+print(f"Frecuencia de Nyquist = {f_nyquist} Hz")
+```
+Donde el resultado fue: Frecuencia de Nyquist = 2000.0 Hz
 
+## 2.	Digitalice la señal usando una frecuencia de muestreo de 4 veces la frecuencia de Nyquist
+La digitalización a una frecuencia de muestreo equivalente a 4·Nyquist permite obtener una señal con mayor densidad de muestras en el mismo intervalo de tiempo. Este sobre-muestreo no añade información nueva, pero mejora la resolución temporal y espectral, facilitando el análisis y la comparación con la señal original.
+```python
+from scipy.signal import resample
 
+# Nueva frecuencia de muestreo
+fs_digital = 4 * f_nyquist   # 8000 Hz
 
+# Duración de la señal
+duracion = len(senal_en_colab) / fs
 
+# Número de muestras nuevas
+N_new = int(duracion * fs_digital)
+
+# Re-muestreo
+senal_digital = resample(senal_en_colab, N_new)
+
+t_digital = np.arange(N_new) / fs_digital
+
+print(f"Muestras originales: {len(senal_en_colab)}, nuevas: {len(senal_digital)}")
+```
+Donde el resultado fue: Muestras originales: 24000, nuevas: 48000
+
+## 3. Carcterizar la señal obteniendo: 
+## a.	Media, mediana, desviación estándar, máximo, mínimo
+La caracterización estadística de la señal digitalizada permite describir su comportamiento de manera cuantitativa. A través de medidas como la media, mediana, desviación estándar, máximo y mínimo, se obtiene información sobre la tendencia central, la dispersión y el rango de amplitudes de la señal
+```python
+# Estadísticos de la señal digitalizada
+media = np.mean(senal_digital)
+mediana = np.median(senal_digital)
+desviacion = np.std(senal_digital)
+maximo = np.max(senal_digital)
+minimo = np.min(senal_digital)
+
+print("Características de la señal digitalizada:")
+print(f"Media: {media}")
+print(f"Mediana: {mediana}")
+print(f"Desviación estándar: {desviacion}")
+print(f"Máximo: {maximo}")
+print(f"Mínimo: {minimo}")
+```
 
 
