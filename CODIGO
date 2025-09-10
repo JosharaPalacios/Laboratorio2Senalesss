@@ -40,6 +40,7 @@ plt.ylabel('y[n]')
 plt.title('Convolución y[n] = x[n] * h[n]')
 plt.grid()
 plt.show()
+
 # Datos de Valentina
 x = np.array([1,0,2,3,3,7,1,2,5,9])   # cédula
 h = np.array([5,6,0,0,8,1,7])         # código estudiantil
@@ -76,5 +77,64 @@ plt.stem(t, y)
 plt.xlabel('n')
 plt.ylabel('y[n]')
 plt.title('Convolución y[n] = x[n] * h[n]')
+plt.grid()
+plt.show()
+
+#Datos de Maria Jose
+x = np.array([1,0,1,1,0,8,5,6,7,9])   # cédula
+h = np.array([5,6,0,0,8,7,6])         # código estudiantil
+
+# Gráfica de h[n]
+t = np.arange(len(h))
+plt.figure(figsize=(8, 4))
+plt.stem(t, h)
+plt.xlabel('n')
+plt.ylabel('h [n]')
+plt.title('h [n] María José')
+plt.grid()
+plt.show()
+
+# Gráfica de x[n]
+t = np.arange(len(x))
+plt.figure(figsize=(8, 4))
+plt.stem(t, x)
+plt.xlabel('n')
+plt.ylabel('x [n]')
+plt.title('x [n] María José')
+plt.grid()
+plt.show()
+
+# Convolución
+y = np.convolve(x, h, mode='full')
+print("Señal convolución entre h [n] y x [n], María José:")
+print(y)
+
+# Gráfica de y[n]
+t = np.arange(len(y))
+plt.figure(figsize=(10, 4))
+plt.stem(t, y)
+plt.xlabel('n')
+plt.ylabel('y [n]')
+plt.title('Convolución y [n] = x [n] * h [n]')
+plt.grid()
+plt.show()
+
+
+#Punto b)
+Ts = 1.25e-3 #Ts dado por la guía
+n = np.arange(9) #para 0<=n<=9
+f = 100 #100 nts
+x1 = np.cos(2 * np.pi * f * n * Ts) #x1(nTs) = cos(2pi100nts)
+x2 = np.sin(2 * np.pi * f * n * Ts) #x2(nTs) = sen(2pi100nts)
+correlacion = np.correlate(x1, x2, mode='full')
+print ("Correlación cruzado (vector o resultado", correlacion)
+
+#Grafica de correlacion
+t_corr = np.arange(-len(n) + 1, len(n))
+plt.figure(figsize=(8, 4))
+plt.stem(t_corr,correlacion)
+plt.xlabel("Desplazamiento")
+plt.ylabel("Correlacion")
+plt.title("Correlacion cruzada entre x1[n] y x2[n]")
 plt.grid()
 plt.show()
