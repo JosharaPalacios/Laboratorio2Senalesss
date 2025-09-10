@@ -79,9 +79,7 @@ Por último, la gráfica tiene un comportamiento que sigue la naturaleza de las 
 
 
 
-### ¿En qué situaciones resulta útil aplicar la correlación cruzada en el procesamiento digital de señales?
-## 4 Aplicaciones de la correlación cruzada en DSP
-
+### 4 ¿En qué situaciones resulta útil aplicar la correlación cruzada en el procesamiento digital de señales?
 La correlación cruzada es útil en múltiples contextos de procesamiento digital de señales, como:
 **Estimación de retardo/desfase** → sincronización de señales, localización de fuentes (radar, sonar, acústica).  
 **Detección de patrones o plantillas** (*matched filtering*), útil para encontrar secuencias conocidas en ruido.  
