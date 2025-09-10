@@ -71,9 +71,7 @@ Vector de correlación cruzada (`mode='full'`):
 
 La gráfica muestra los valores de correlación cruzada en el rango de desplazamientos `m = -8 … 8`.
 
----
-
-# 3. Análisis
+## 3. Análisis
 
 - El **eje X** (desplazamiento) va de `-8` a `8`, lo que indica los distintos *lags* entre las señales.  
 - El **eje Y** alcanza valores entre `-3.5` y `+3.5`, correspondientes a la fuerza de la correlación.  
@@ -88,7 +86,7 @@ La gráfica muestra los valores de correlación cruzada en el rango de desplazam
 
 En conclusión, la correlación cruzada permitió identificar correctamente que la señal seno está **desfasada 90°** respecto al coseno, y que el máximo alineamiento se da con un desplazamiento de aproximadamente **2 muestras**.
 
----
+
 ### ¿En qué situaciones resulta útil aplicar la correlación cruzada en el procesamiento digital de señales?
 ## 4. Aplicaciones de la correlación cruzada en DSP
 
