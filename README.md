@@ -24,41 +24,6 @@ Esta sección del laboratorio se centra en la aplicación de la **correlación c
 ### 2. Correlación Cruzada
 <img width="689" height="393" alt="image" src="https://github.com/user-attachments/assets/8250ec23-9857-4f87-b1a8-dd81d334ff54" />
 
-### 3. ¿En qué situaciones resulta útil aplicar la correlación cruzada en el procesamiento digital de señales?
-Se calcularon dos señales discretas a partir de los parámetros dados en la guía:
-
-- Período de muestreo: `Ts = 1.25 ms`  
-- Frecuencia: `f = 100 Hz`  
-- Número de muestras: `n = 0 … 8`
-
-Las señales definidas fueron:  
-
-\[
-x_1[n] = \cos(2 \pi f n T_s), \quad x_2[n] = \sin(2 \pi f n T_s)
-\]
-
-Luego se obtuvo la **correlación cruzada** entre ellas.
-
----
-# Parte B – Correlación Cruzada
-
-## 1. Planteamiento
-Se calcularon dos señales discretas a partir de los parámetros dados en la guía:
-
-- Período de muestreo: `Ts = 1.25 ms`  
-- Frecuencia: `f = 100 Hz`  
-- Número de muestras: `n = 0 … 8`
-
-Las señales definidas fueron:  
-
-\[
-x_1[n] = \cos(2 \pi f n T_s), \quad x_2[n] = \sin(2 \pi f n T_s)
-\]
-
-Luego se obtuvo la **correlación cruzada** entre ellas.
-
----
-
 ## Código en Python
 
 ```python
@@ -124,7 +89,7 @@ La gráfica muestra los valores de correlación cruzada en el rango de desplazam
 En conclusión, la correlación cruzada permitió identificar correctamente que la señal seno está **desfasada 90°** respecto al coseno, y que el máximo alineamiento se da con un desplazamiento de aproximadamente **2 muestras**.
 
 ---
-
+### ¿En qué situaciones resulta útil aplicar la correlación cruzada en el procesamiento digital de señales?
 ## 4. Aplicaciones de la correlación cruzada en DSP
 
 La correlación cruzada es útil en múltiples contextos de procesamiento digital de señales, como:
