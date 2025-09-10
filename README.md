@@ -368,5 +368,95 @@ print(f"Desviación estándar: {desviacion}")
 print(f"Máximo: {maximo}")
 print(f"Mínimo: {minimo}")
 ```
+Donde el resultado fue:
+Media: -0.12946811595299854
+Mediana: -0.2387616875639651
+Desviación estándar: 0.3806889271429698
+Máximo: 2.2994220218191566
+Mínimo: -0.6639772555790838
+## b.	Clasifique la señal según su tipo (determinística/aleatoria, periódica/aparádica, analógica/digital).
+
+La señal biológica analizada se clasifica como aleatoria, debido a que proviene de un proceso fisiológico no completamente predecible; aperiódica, ya que no presenta un patrón repetitivo exacto en el tiempo; y digital, pues aunque su origen es analógico, fue muestreada y procesada en el entorno computacional.
+
+## 4.	Aplique la Transformada de Fourier a la señal y grafique:
+La transformada de Fourier convierte la señal del dominio del tiempo al dominio de la frecuencia, mostrando las componentes espectrales que la conforman y su magnitud. Esto permite identificar las frecuencias dominantes, analizar su distribución y detectar patrones o ruidos no evidentes en la forma temporal.
+
+## a.	La transformada de la señal
+```python
+from scipy.fft import fft, fftfreq
+
+
+N = len(senal_digital)
+fft_senal = fft(senal_digital)
+frecuencias = fftfreq(N, 1/fs_digital)
+
+fft_magnitud = np.abs(fft_senal[:N//2])
+frecuencias_pos = frecuencias[:N//2]
+
+
+plt.figure(figsize=(10,4))
+plt.plot(frecuencias_pos, fft_magnitud)
+plt.title("Transformada de Fourier de la señal")
+plt.xlabel("Frecuencia [Hz]")
+plt.ylabel("Magnitud")
+plt.grid()
+plt.show()
+```
+<img width="640" height="289" alt="transformada" src="https://github.com/user-attachments/assets/3419a98e-bb2f-415b-af0b-5f4d2ad56e9b" />
+## b.	Densidad espectral de potencia 
+La densidad espectral de potencia (PSD) permite analizar cómo se distribuye la potencia de la señal a lo largo de las diferentes frecuencias. Con ella se puede identificar en qué rangos se concentra la mayor energía espectral, facilitando la interpretación y comparación del contenido frecuencial de la señal.
+
+```python
+from scipy.signal import welch
+
+frecs, psd = welch(senal_digital, fs=fs_digital, nperseg=1024)
+
+plt.semilogy(frecs, psd)
+plt.title("Densidad espectral de potencia")
+plt.xlabel("Frecuencia [Hz]")
+plt.ylabel("Potencia [V²/Hz]")
+plt.grid()
+plt.show()
+```
+<img width="434" height="338" alt="densidad" src="https://github.com/user-attachments/assets/3c487a52-fa25-4bbf-9da1-b95535834ff3" />
+## c. estadísticos en el dominio de la frecuencia:
+Permite describir cómo se distribuye la energía de la señal en las distintas componentes espectrales. A través de la frecuencia media, mediana y la desviación estándar se cuantifica la concentración y dispersión del espectro, mientras que el histograma de frecuencias ofrece una representación visual de dicha distribución.
+## i.	Frecuencia media
+La frecuencia media corresponde al valor promedio de las componentes espectrales de la señal, ponderado por su energía. Funciona como un “centro de gravedad” del espectro y permite identificar en qué rango de frecuencias se concentra principalmente la información de la señal.
+
+```python
+# Frecuencia media
+freq_media = np.sum(frecuencias_pos * fft_magnitud) / np.sum(fft_magnitud)
+```
+## ii.	Frecuencia mediana
+La frecuencia mediana indica el valor de frecuencia que divide el espectro en dos partes con igual energía acumulada. Es una medida útil para resumir la distribución espectral de la señal y conocer hasta qué frecuencia se concentra la mitad de su energía total.
+
+```python
+# Frecuencia mediana
+energia_acumulada = np.cumsum(fft_magnitud)
+freq_mediana = frecuencias_pos[np.where(energia_acumulada >= energia_acumulada[-1]/2)[0][0]]
+```
+## iii.	Desviación estándar
+La desviación estándar permite cuantificar la dispersión de la señal respecto a su valor medio. En el dominio del tiempo mide la variabilidad de la amplitud, mientras que en el dominio de la frecuencia indica si la energía está concentrada en torno a ciertas frecuencias o distribuida en un rango más amplio.
+
+```python
+# Desviación estándar
+freq_std = np.sqrt(np.sum(((frecuencias_pos - freq_media)**2) * fft_magnitud) / np.sum(fft_magnitud))
+```
+Donde el resultado fue: 
+Frecuencia media: 314.9952580356132 Hz
+Frecuencia mediana: 61.5 Hz
+Desviación estándar: 484.65549430365735 Hz
+## iv.	Histograma de frecuencias
+El histograma de frecuencias permite representar la distribución de la energía de la señal en distintos rangos del espectro. De esta forma, se identifica de manera visual en qué frecuencias se concentra la mayor parte de la información y se facilita la interpretación del comportamiento espectral de la señal.
+```python
+plt.hist(frecuencias_pos, bins=50, weights=fft_magnitud, color="skyblue", edgecolor="black")
+plt.title("Histograma de frecuencias")
+plt.xlabel("Frecuencia [Hz]")
+plt.ylabel("Amplitud acumulada")
+plt.show()
+```
+<img width="443" height="335" alt="histograma" src="https://github.com/user-attachments/assets/18dd56ef-0335-4725-9bee-d4a9b193b1a4" />
+
 
 
