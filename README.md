@@ -73,7 +73,7 @@ La gráfica muestra los valores de correlación cruzada en el rango de desplazam
 
 ---
 
-## 3. Análisis
+# 3. Análisis
 
 - El **eje X** (desplazamiento) va de `-8` a `8`, lo que indica los distintos *lags* entre las señales.  
 - El **eje Y** alcanza valores entre `-3.5` y `+3.5`, correspondientes a la fuerza de la correlación.  
