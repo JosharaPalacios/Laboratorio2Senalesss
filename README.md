@@ -9,6 +9,22 @@
 - Comprender la convolución como una operación que permite obtener la respuesta de un sistema discreto ante una entrada determinada.
 - Analizar la correlación como medida de similitud entre dos señales.
 - Aplicar la Transformada de Fourier como herramienta de análisis en el dominio de la frecuencia.
+## PARTE B
+
+##  Resumen
+
+Esta sección del laboratorio se centra en la aplicación de la **correlación cruzada** entre dos señales discretas, **$x[n]$** y **$h[n]$**. El objetivo es determinar la similitud entre ambas señales en función de un desplazamiento temporal. El proceso incluye el cálculo, la representación gráfica del resultado y una discusión sobre la utilidad de esta técnica en el procesamiento digital de señales.
+
+### 1. Definición de Señales
+
+
+- Señal Cosenoidal
+  x1[nTs] = cos(2π * 100 * nTs) = cos(n * π/4)  
+- Señal Senoidal
+  x2[nTs] = sin(2π * 100 * nTs) = sin(n * π/4)
+
+### 2. Correlación Cruzada
+### 3. ¿En qué situaciones resulta útil aplicar la correlación cruzada en el procesamiento digital de señales?
 
 ## PARTE C 
 ### Resumen 
