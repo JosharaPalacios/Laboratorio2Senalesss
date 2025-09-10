@@ -284,6 +284,28 @@ Esta sección del laboratorio se centra en la convolución y la compresión cruz
 
 Lo primero fue generar la señal y extraerla en el laboratorio: 
 
+### Adquisición de la Señal con DAQ
+Para la adquisición de la señal, se implementó un sistema basado en un dispositivo de adquisición de datos (DAQ). Este proceso requirió la integración de dos librerías críticas:
+
+- La librería del driver del DAQ que nos proporciona las funciones que permiten la comunicación directa con el hardware del dispositivo.
+- La librería del DAQque nos ofrece una interfaz de programación que simplifica la configuración de los canales de entrada, la frecuencia de muestreo y otras especificaciones del proceso de adquisición.
+
+### Configuración y Pruebas Iniciales
+El proceso de adquisición comenzó con la generación de una señal biológica EOG (electrooculograma) utilizando un generador de señales. Se configuró la frecuencia de esta señal en 1 Hz para simular un movimiento ocular lento.
+
+Antes de la adquisición final, se realizó una prueba en el simulador del driver. Durante esta prueba, se verificaron los siguientes parámetros de la señal:
+
+- Amplitud máxima (Max): 2 V
+- Amplitud mínima (Min): -1 V
+- Tasa de muestreo (Rate Hz): 4000 Hz
+![Driverseñal](https://github.com/user-attachments/assets/24c7bc9b-621d-488f-9967-ef1aafdb2fdb)
+
+### Extracción y Visualización de las Gráficas
+Para la extracción y visualización de la señal adquirida, se utilizó un script de Python proporcionado por la docente. Este código se ejecutó en el entorno de desarrollo Anaconda/Spyder. El script permitió procesar los datos capturados por el DAQ y generar las representaciones gráficas necesarias para el análisis.
+
+A continuación, se presentan la gráfica obtenida, la cual muestra la señal EOG adquirida con sus características de amplitud y frecuencia:
+![fc4000](https://github.com/user-attachments/assets/74269f0d-b4a4-4d55-b085-6e8ad735fcf9)
+
 
 ## Código en Python
 
