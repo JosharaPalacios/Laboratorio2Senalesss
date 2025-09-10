@@ -487,8 +487,12 @@ plt.show()
 # DIAGRAMAS DE FLUJO 
 ## PARTE A
 <img width="224" height="374" alt="parteA" src="https://github.com/user-attachments/assets/deac9c7c-cf06-416f-a24e-5e0f7d14a70b" />
+
+
 ## PARTE B
 <img width="109" height="152" alt="parteb" src="https://github.com/user-attachments/assets/4afa9e9d-4c55-4e8a-926d-ed09a4e169c2" />
+
+
 ## PARTE C
 <img width="113" height="227" alt="partec" src="https://github.com/user-attachments/assets/6f2cc9b2-84fd-4cac-b22b-59a74555b52b" />
 
