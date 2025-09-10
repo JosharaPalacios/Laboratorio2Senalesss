@@ -67,11 +67,10 @@ Vector de correlación cruzada (`mode='full'`):
  -2.28847549e-17 -2.82842712e+00 -3.50000000e+00 -2.12132034e+00
   4.55531587e-16  1.41421356e+00  1.50000000e+00  7.07106781e-01
   0.00000000e+00]
-```
 
 La gráfica muestra los valores de correlación cruzada en el rango de desplazamientos `m = -8 … 8`.
 
-## 3. Análisis
+## 3 Análisis
 Frente al análisis del código destaca que los valores de tiempo (Ts) y frecuencia (f) ya habian sido establecidos por las propias fórmulas estbalecidas. En cuanto al resultado de su tabla destaca que el eje X tiene valores de -8 a 8, lo que indica que estás observando un rango de desplazamientos entre las dos señales y desde -8 hasta +8 muestras; el eje Y tiene un rango de -3 a 3, lo que significa que los valores de correlación cruzada varían en este intervalo.
 
 La forma general de la gráfica muestra un comportamiento de simetría con respecto al eje. Esta simetría es típica cuando se correlacionan señales periódicas con un desfase constante. La gráfica parece tener un pico en y=4 y luego decae en ambos sentidos. Esto refleja un patrón de correlación común entre señales como seno y coseno.
@@ -81,7 +80,7 @@ Por último, la gráfica tiene un comportamiento que sigue la naturaleza de las 
 
 
 ### ¿En qué situaciones resulta útil aplicar la correlación cruzada en el procesamiento digital de señales?
-## 4. Aplicaciones de la correlación cruzada en DSP
+## 4 Aplicaciones de la correlación cruzada en DSP
 
 La correlación cruzada es útil en múltiples contextos de procesamiento digital de señales, como:
 **Estimación de retardo/desfase** → sincronización de señales, localización de fuentes (radar, sonar, acústica).  
