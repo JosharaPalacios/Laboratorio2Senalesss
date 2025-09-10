@@ -403,6 +403,7 @@ plt.grid()
 plt.show()
 ```
 <img width="640" height="289" alt="transformada" src="https://github.com/user-attachments/assets/3419a98e-bb2f-415b-af0b-5f4d2ad56e9b" />
+
 ## b.	Densidad espectral de potencia 
 La densidad espectral de potencia (PSD) permite analizar cómo se distribuye la potencia de la señal a lo largo de las diferentes frecuencias. Con ella se puede identificar en qué rangos se concentra la mayor energía espectral, facilitando la interpretación y comparación del contenido frecuencial de la señal.
 
