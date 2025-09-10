@@ -93,3 +93,46 @@ La correlación cruzada es útil en múltiples contextos de procesamiento digita
 ## PARTE C 
 ### Resumen 
 Esta sección del laboratorio se centra en la convolución y la compresión cruzada , específicamente su relación con la simetría de las señales. Se examina cómo el orden de las señales afecta los resultados de la convolución y cómo la codificación cruzada está intrínsecamente ligada a la convolución de una señal invertida en el tiempo. El objetivo principal es validar la propiedad conmutativa de la convolución y demostrar la conexión entre ambas operaciones.
+
+
+Lor primero fue generar la señal y extraerla en el laboratorio: 
+## Código en Python
+
+```python
+
+from google.colab import drive
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Montar Google Drive
+drive.mount('/content/drive')
+
+# Ruta completa al archivo en tu Drive
+ruta = "/content/drive/MyDrive/GITTHUB/extraccion_señal_1.npy"
+
+# Cargar la señal
+senal_en_colab = np.load(ruta)
+
+# Parámetros
+fs = 4000
+duracion = 3
+t = np.arange(len(senal_en_colab)) / fs
+
+# Graficar la señal
+plt.plot(t, senal_en_colab)
+plt.axis([0, duracion, -1, 2.5])
+plt.grid()
+plt.title(f"Señal Generada")
+plt.show()
+```
+<img width="428" height="326" alt="Primera imagen" src="https://github.com/user-attachments/assets/5e94628f-48da-45ff-ab30-cce4af80cfbf" />
+
+
+## 1.	Determine la frecuencia de Nyquist para la señal generada
+La frecuencia de Nyquist se utiliza como referencia fundamental para garantizar un muestreo adecuado de la señal. Dado que corresponde a la mitad de la frecuencia de muestreo original, establece el límite máximo de información que puede analizarse sin que aparezca aliasing. A partir de este valor se define la nueva frecuencia de muestreo (4·Nyquist), lo que permite digitalizar la señal con mayor densidad de puntos, mejorando la resolución temporal y la representación en el dominio de la frecuencia sin alterar su contenido espectral real.
+
+
+
+
+
+
