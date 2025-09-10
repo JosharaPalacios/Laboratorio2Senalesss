@@ -138,3 +138,139 @@ plt.ylabel("Correlacion")
 plt.title("Correlacion cruzada entre x1[n] y x2[n]")
 plt.grid()
 plt.show()
+
+#Parte c)
+from google.colab import drive
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Montar Google Drive
+drive.mount('/content/drive')
+
+# Ruta completa al archivo en tu Drive
+ruta = "/content/drive/MyDrive/GITTHUB/extraccion_señal_1.npy"
+
+# Cargar la señal
+senal_en_colab = np.load(ruta)
+
+# Parámetros
+fs = 4000
+duracion = 3
+t = np.arange(len(senal_en_colab)) / fs
+
+# Graficar la señal
+plt.plot(t, senal_en_colab)
+plt.axis([0, duracion, -1, 2.5])
+plt.grid()
+plt.title(f"Señal Generada")
+plt.show()
+
+# Frecuencia de Nyquist
+fs = 4000  # frecuencia de muestreo usada
+f_nyquist = fs / 2
+print(f"Frecuencia de Nyquist = {f_nyquist} Hz")
+
+from scipy.signal import resample
+
+# Nueva frecuencia de muestreo
+fs_digital = 4 * f_nyquist   # 8000 Hz
+
+# Duración de la señal
+duracion = len(senal_en_colab) / fs
+
+# Número de muestras nuevas
+N_new = int(duracion * fs_digital)
+
+# Re-muestreo
+senal_digital = resample(senal_en_colab, N_new)
+
+# Vector de tiempo para la señal digital
+t_digital = np.arange(N_new) / fs_digital
+
+print(f"Muestras originales: {len(senal_en_colab)}, nuevas: {len(senal_digital)}")
+
+# Estadísticos de la señal digitalizada
+media = np.mean(senal_digital)
+mediana = np.median(senal_digital)
+desviacion = np.std(senal_digital)
+maximo = np.max(senal_digital)
+minimo = np.min(senal_digital)
+
+print("Características de la señal digitalizada:")
+print(f"Media: {media}")
+print(f"Mediana: {mediana}")
+print(f"Desviación estándar: {desviacion}")
+print(f"Máximo: {maximo}")
+print(f"Mínimo: {minimo}")
+
+# Comparación
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(12,5))
+
+# Señal original
+plt.subplot(1,2,1)
+t_original = np.arange(len(senal_en_colab)) / fs
+plt.plot(t_original, senal_en_colab)
+plt.title("Señal original (fs=4000 Hz)")
+plt.xlabel("Tiempo [s]")
+plt.ylabel("Amplitud")
+
+# Señal digitalizada
+plt.subplot(1,2,2)
+plt.plot(t_digital, senal_digital)
+plt.title("Señal digitalizada (fs=8000 Hz)")
+plt.xlabel("Tiempo [s]")
+plt.ylabel("Amplitud")
+
+plt.tight_layout()
+plt.show()
+
+#TRANSFORMADA DE FOURIER
+from scipy.fft import fft, fftfreq
+
+
+N = len(senal_digital)
+fft_senal = fft(senal_digital)
+frecuencias = fftfreq(N, 1/fs_digital)
+
+fft_magnitud = np.abs(fft_senal[:N//2])
+frecuencias_pos = frecuencias[:N//2]
+
+
+plt.figure(figsize=(10,4))
+plt.plot(frecuencias_pos, fft_magnitud)
+plt.title("Transformada de Fourier de la señal")
+plt.xlabel("Frecuencia [Hz]")
+plt.ylabel("Magnitud")
+plt.grid()
+plt.show()
+
+from scipy.signal import welch
+
+frecs, psd = welch(senal_digital, fs=fs_digital, nperseg=1024)
+
+plt.semilogy(frecs, psd)
+plt.title("Densidad espectral de potencia")
+plt.xlabel("Frecuencia [Hz]")
+plt.ylabel("Potencia [V²/Hz]")
+plt.grid()
+plt.show()
+
+from scipy.signal import welch
+
+frecs, psd = welch(senal_digital, fs=fs_digital, nperseg=1024)
+
+plt.semilogy(frecs, psd)
+plt.title("Densidad espectral de potencia")
+plt.xlabel("Frecuencia [Hz]")
+plt.ylabel("Potencia [V²/Hz]")
+plt.grid()
+plt.show()
+
+plt.hist(frecuencias_pos, bins=50, weights=fft_magnitud, color="skyblue", edgecolor="black")
+plt.title("Histograma de frecuencias")
+plt.xlabel("Frecuencia [Hz]")
+plt.ylabel("Amplitud acumulada")
+plt.show()
+
